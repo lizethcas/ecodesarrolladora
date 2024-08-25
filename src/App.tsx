@@ -1,11 +1,12 @@
-import Button from "./components/ButtonComponent/Button.component";
+import { Login, Registration } from "./components/Login-Registrar";
+import { NavBar } from "./views";
 
 function App() {
-  
   return (
     <>
-      <h1 className="text-3xl">titulo</h1>
-      <Button type="primary" text="boton" onClick={()=>{alert('button clicked')}} />
+      <NavBar />
+      <Login />
+      <Registration />
     </>
   );
 }

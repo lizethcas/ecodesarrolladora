@@ -1,0 +1,6 @@
+export * from "./NavBar/NavBarView.tsx"
+export * from "./Footer/FooterView.tsx"
+export * from "./Contact/ContactView.tsx"
+export * from "./Blog/BlogPage.tsx"
+export * from "./Properties/PropetiesView.tsx"
+export * from "./Home/HomeView.tsx"

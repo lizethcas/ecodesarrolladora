@@ -3,6 +3,7 @@ import { BlogPage, ContactView, FooterView, HomeView, NavBarView, PropetiesView 
 import { NotFound } from "./juan-views/NotFound/NotFound";
 
 function App() {
+  
   return (
     <>
       <div className="bg-slate-900">

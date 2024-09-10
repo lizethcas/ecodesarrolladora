@@ -1,22 +1,40 @@
-import { useEffect, useState } from "react";
-import Button from "./components/Atoms/ButtonComponent/Button.component";
-import axios from "axios";
-
-
+import { Routes, Route } from "react-router-dom";
+import {
+  About,
+  BlogPage,
+  ContactView,
+  FooterView,
+  HomeView,
+  Login,
+  NavBarView,
+  NotFound,
+  PropetiesView,
+  Registration,
+} from "./pages/common";
 
 function App() {
-   return (
+  return (
     <>
-      <h1 className="text-3xl">Titulo</h1>
-      <Button
-        type="primary"
-        text="boton"
-        onClick={() => {
-          alert("button clicked");
-        }}
-      />
+      <div className="bg-slate-900">
+        <NavBarView />
+      </div>
+      <Routes>
+        <Route path="/" element={<HomeView />} />
+        <Route path="/properties" element={<PropetiesView />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/contact" element={<ContactView />} />
+        <Route path="/aboutus" element={<About />} />
 
-         </>
+        {/* Registro y Login */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Registration />} />
+
+        {/* Ruta inexistente */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+
+      <FooterView />
+    </>
   );
 }
 

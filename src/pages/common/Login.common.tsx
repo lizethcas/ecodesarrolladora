@@ -1,34 +1,59 @@
+// import { useDispatch, useSelector } from "react-redux";
+// import { loginUser } from "../../redux/reducers/authReducer";
+// import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../../redux/reducers/authReducer";
-import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+
+  // const { loading, error } = useSelector((state) => state.user);
+
+  // const HandleLogin = (e) => {
+  //   e.preventDefault();
+
+  //   const dispatch = useDispatch();
+  //   const navigate = useNavigate();
+
+  //   const userCredentials = {
+  //     email,
+  //     password,
+  //   };
+  //   dispatch(loginUser(userCredentials)).then((result) => {
+  //     if (result.payload) {
+  //       setEmail("");
+  //       setPassword("");
+  //       navigate("/");
+  //     }
+  //   });
+
+  //   console.log(userCredentials);
+  // };
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  //Redux state
-  const { loading, error } = useSelector((state) => state.user);
-
-  const HandleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true); // Activar el estado de carga al iniciar el envío
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-
-    const userCredentials = {
-      email,
-      password,
-    };
-    dispatch(loginUser(userCredentials)).then((result) => {
-      if (result.payload) {
-        setEmail("");
-        setPassword("");
-        navigate("/");
+    setTimeout(async () => {
+      try {
+        const response = await axios.post("http://127.0.0.1:8000/api/signin/", {
+          email,
+          password,
+        });
+        console.log(response.data.message);
+        // Aquí puedes manejar la navegación o cualquier acción posterior al inicio de sesión
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setLoading(false); // Desactivar el estado de carga después de completar la solicitud
       }
-    });
-
-    console.log(userCredentials);
+    }, 2000);
   };
 
   return (
@@ -45,12 +70,7 @@ export const Login = () => {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form
-          className="space-y-6"
-          action="#"
-          method="POST"
-          onSubmit={HandleLogin}
-        >
+        <form className="space-y-6" onSubmit={handleLogin}>
           <div>
             <label className="block text-sm font-medium leading-6 text-gray-900">
               Correo electrónico
@@ -60,7 +80,6 @@ export const Login = () => {
                 id="email"
                 name="email"
                 type="email"
-                autoComplete="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -104,14 +123,15 @@ export const Login = () => {
             <button
               type="submit"
               className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              disabled={loading}
             >
               {loading ? "Cargando" : "Iniciar Sesión"}
             </button>
-            {error && (
+            {/* {error && (
               <div className="text-color-red" role="alert">
                 {error}
               </div>
-            )}
+            )} */}
           </div>
         </form>
 

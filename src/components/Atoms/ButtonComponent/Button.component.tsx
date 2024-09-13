@@ -10,10 +10,11 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     icon?: keyof typeof iconsLibrary; // Usa los nombres personalizados como claves
     /** Icon size and color */
     iconStyles?: IconBaseProps; // Propiedades adicionales para el ícono
-    /** Button Type */
+     /** Button Type */
     variant?: 'primary' | 'secondary' | 'ghost';
-    /** Button Size */
+     /** Button Size */
     size?: 's' | 'm' | 'l';
+    
     className?: string;
 }
 
@@ -43,7 +44,7 @@ const Button: FC<ButtonProps> = ({
 
 
     const mergedClasses = twMerge(
-        `text-center items-center gap-2 font-medium flex hover:shadow-opacity30-black active:shadow-opacity25-black ${variantClasses[variant]} ${sizeClasses[size]}`,
+        `text-center items-center gap-2 font-medium flex hover:shadow-opacity30-black active:shadow-opacity25-black ${variantClasses[variant]} ${sizeClasses[size]} `,
         className
     );
 

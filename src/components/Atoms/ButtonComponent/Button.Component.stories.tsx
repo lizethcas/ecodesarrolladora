@@ -26,18 +26,19 @@ const meta: Meta<typeof ButtonComponent> = {
 export default meta;
 
 type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {
+/** Primary Button is the principal button pages*/
+export const Primary: Story = {
   args: {
     label: "Click Me!",
     variant: "primary",
     onClick: action("button clicked"),
-    size:"m",
+    size: "m",
     icon: 'users', // Usa la clave del ícono
     iconStyles: { size: '', color: '' }, // Propiedades adicionales para el ícono
   },
 };
 
+/** A secondary button is used for less prominent actions, often styled to complement the primary button without drawing as much attention.*/
 export const Secondary: Story = {
   args: {
     label: "Click Me!",

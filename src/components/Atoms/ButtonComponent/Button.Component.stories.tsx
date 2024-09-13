@@ -1,41 +1,34 @@
-// Replace your-renderer with the renderer you are using (e.g., react, vue3, etc.)
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
+import ButtonComponent from './Button.component';
 import { action } from "@storybook/addon-actions";
-import Button from "./Button.component";
 
-const meta: Meta<typeof Button> = {
+const meta: Meta<typeof ButtonComponent> = {
   /**This is the principal call to action? */
   title: "Design System/Atoms/Button",
-  component: Button,
+  component: ButtonComponent,
   tags: ["autodocs"],
+
 };
 export default meta;
 
-type Story = StoryObj<typeof Button>;
 
-/**the primary button style used to guide users for forward in a flow. Use only one per page */
-export const Primary: Story = {
+type Story = StoryObj<typeof meta>;
+
+
+export const Default: Story = {
   args: {
-    type: "primary",
-    text: "Registrarse",
-    onClick: action("Primary button clicked!"),
+    label: "Click Me!",
+    variant: "primary",
+    onClick: action("button clicked"),
+
   },
 };
 
-/**Secondary button styled used more frequently for secondary actions */
-export const Secondary: Story = {
+export const secondary: Story = {
   args: {
-    type: "secondary",
-    text: "Editar",
-    onClick: action("Secondary button clicked"),
-  },
-};
-
-/**Ghost button styled used for actions that are less critical without drawing too much attention or for navigation  */
-export const Ghost: Story = {
-  args: {
-    type: "ghost",
-    text: "Más opciones",
-    onClick: action("Ghost button clicked"),
+    label: "Click Me!",
+    variant: "secondary",
+    onClick: action("button clicked"),
+    
   },
 };

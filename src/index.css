@@ -1,10 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+/* Importar los estilos específicos de componentes */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
-:root{
-    --accent: 87 60 27%;
+@layer base {
+  :root {
+    --accent-600: 86, 65%, 35%;
+    --accent-800: 82, 52%, 23%;
+    --accent-700: 82, 59%, 27%;
+    --accent-1000: 88, 60%, 16%;
+    --accent: 87, 61%, 15%;
     --foireground: 0 0 100%;
+    --text-color: hsl(0, 0%, 16%);
+  }
+
+  body {
+    font-size: 16px;
+    font-family: "Raleway", sans-serif;
+    color: var(--text-color);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: "Quicksand", system-ui;
+  }
+
+  h1 {
+    font-size: 2.986rem;
+  }
+
+  h2 {
+    font-size: 2.488rem;
+  }
+
+  h3 {
+    font-size: 2.074rem;
+  }
+
+  @media (max-width: 480px) {
+    body {
+      font-size: 14px; /* Ajusta el tamaño de letra para celulares */
+    }
+  }
 }

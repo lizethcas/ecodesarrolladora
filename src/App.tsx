@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <RoutePage />
-      <Button label="iniciar sesion" size="m" variant="secondary" className="border-borderGradient"/>
+      <Button label="iniciar sesion" size="m" variant="secondary" icon={"users"} iconStyles={{ size: 24}}/>
 
     </>
   );

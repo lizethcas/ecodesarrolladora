@@ -1,58 +1,58 @@
 import { ButtonHTMLAttributes, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { iconsLibrary } from '../../IconLibrary/IconLibrary';
+import { IconBaseProps } from 'react-icons';
 
-// Tipos de botones y tamaños
-/* type ButtonVariant = 'primary' | 'secondary' | 'ghost';
-type ButtonSize = 'small' | 'medium' | 'large';
- */
-// Definición de los props del botón
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    /** Text to be displayed inside the button */
+    /** Button name */
     label?: string;
-    /** Defines the button icon */
-    icon?: React.ReactNode;
-    /** Defines the button type and its styling */
+    /** type of Button icon */
+    icon?: keyof typeof iconsLibrary; // Usa los nombres personalizados como claves
+    /** Icon size and color */
+    iconStyles?: IconBaseProps; // Propiedades adicionales para el ícono
+    /** Button Type */
     variant?: 'primary' | 'secondary' | 'ghost';
-    /** Defines the button size */
+    /** Button Size */
     size?: 's' | 'm' | 'l';
     className?: string;
 }
 
-/** Button component for user interaction */
 const Button: FC<ButtonProps> = ({
-    label,
     icon,
+    label,
+    iconStyles, // Añadido para pasar props al ícono
     variant = 'primary',
     size = 'm',
+
     className,
     ...props
 }) => {
-    // Estilos por variante
     const variantClasses = {
-        primary: 'border border-accent1000 bg-gradient-to-t from-accent600 hover:from-accent800 to-accent800 hover:to-accent600 hover:shadow-opacity30-black active:shadow-opacity25-black rounded-2xl  text-center text-foireground text-white 	',
-        secondary: 'text-accent700 rounded-2xl border-accent700 border-[1.5px]',
+        primary: 'border border-accent1000 bg-gradient-to-t from-accent600 hover:from-accent800 to-accent800 hover:to-accent600 rounded-2xl text-center text-foireground text-white',
+        secondary: 'text-accent700 rounded-2xl border-accent700 border-[1.5px] bg-transparent hover:bg-gradient-to-t hover:from-accent600 hover:to-accent800 hover:text-white transition duration-300 ease-in-out',
         ghost: 'bg-transparent text-blue-500 hover:bg-blue-50',
     };
 
-    // Estilos por tamaños
     const sizeClasses = {
         s: 'p-1 w-2/4',
         m: 'sm:p-[10px] py-[6px] px-[10px]',
-        l: ' p-[10px] w-full ',
+        l: 'p-[10px] w-full',
     };
 
-    // Combina las clases con tailwind-merge
+    const IconComponent = icon ? iconsLibrary[icon] : null; // Mapea el nombre al componente de ícono
+
+
     const mergedClasses = twMerge(
-        `text-center font-medium ${variantClasses[variant]} ${sizeClasses[size]} `,
+        `text-center items-center gap-2 font-medium flex hover:shadow-opacity30-black active:shadow-opacity25-black ${variantClasses[variant]} ${sizeClasses[size]}`,
         className
     );
 
     return (
         <button className={mergedClasses} {...props}>
-            {icon && <span className="flex items-center">{icon}</span>}
             {label}
+            {IconComponent && <IconComponent {...iconStyles} />} {/* Renderiza el ícono con props */}
         </button>
     );
 };
 
-export default Button
+export default Button;

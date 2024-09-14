@@ -36,7 +36,7 @@ const Button: FC<ButtonProps> = ({
 
     const sizeClasses = {
         s: 'p-1 w-2/4',
-        m: 'sm:p-[10px] py-[6px] px-[10px]',
+        m: 'px-[10px] py-[7px]',
         l: 'p-[10px] w-full',
     };
 
@@ -44,7 +44,7 @@ const Button: FC<ButtonProps> = ({
 
 
     const mergedClasses = twMerge(
-        `text-center items-center gap-2 font-medium flex hover:shadow-opacity30-black active:shadow-opacity25-black ${variantClasses[variant]} ${sizeClasses[size]} `,
+        `text-center items-center  gap-2 font-medium flex space-between hover:shadow-opacity30-black active:shadow-opacity25-black ${variantClasses[variant]} ${sizeClasses[size]} `,
         className
     );
 

@@ -30,21 +30,21 @@ const Button: FC<ButtonProps> = ({
 }) => {
     const variantClasses = {
         primary: 'border border-accent1000 bg-gradient-to-t from-accent600 hover:from-accent800 to-accent800 hover:to-accent600 rounded-2xl text-center text-foireground text-white',
-        secondary: 'text-accent700 rounded-2xl border-accent700 border-[1.5px] bg-transparent hover:bg-gradient-to-t hover:from-accent600 hover:to-accent800 hover:text-white transition duration-300 ease-in-out',
+        secondary: 'text-accent700 rounded-2xl border-accent700 border-[1.5px] bg-transparent transition duration-300 ease-in-out md:hover:bg-gradient-to-t md:hover:from-accent600 md:hover:to-accent800 md:hover:text-white no-hover',
         ghost: 'bg-transparent text-blue-500 hover:bg-blue-50',
     };
 
     const sizeClasses = {
-        s: 'p-1 w-2/4',
+        s: 'p-2 w-2/4',
         m: 'px-[10px] py-[7px]',
         l: 'p-[10px] w-full',
     };
 
     const IconComponent = icon ? iconsLibrary[icon] : null; // Mapea el nombre al componente de ícono
-
+    
 
     const mergedClasses = twMerge(
-        `text-center items-center  gap-2 font-medium flex space-between hover:shadow-opacity30-black active:shadow-opacity25-black ${variantClasses[variant]} ${sizeClasses[size]} `,
+        `flex justify-center items-center gap-2 font-medium text-center hover:shadow-opacity30-black active:shadow-opacity25-black ${variantClasses[variant]} ${sizeClasses[size]} `,
         className
     );
 

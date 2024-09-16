@@ -1,6 +1,7 @@
 export interface linkProps {
   to: string;
   label: string;
+ 
 }
 
 export interface NavLinkProps  {

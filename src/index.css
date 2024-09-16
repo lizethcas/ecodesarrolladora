@@ -46,9 +46,3 @@
     }
   }
 }
-
-@media (max-width: 768px) {
-  .no-hover:hover {
-    pointer-events: none;
-  }
-}

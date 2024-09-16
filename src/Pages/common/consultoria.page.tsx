@@ -3,7 +3,7 @@ const ConsultoriaPage = () => {
     return (
         <>
            
-           <h1>Consultoria</h1>
+           <h1>Consultoria General</h1>
        
 
         </>

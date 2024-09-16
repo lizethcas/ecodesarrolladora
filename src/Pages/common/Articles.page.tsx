@@ -2,7 +2,7 @@
 const ArticlesPage = () => {
     return (
         <>
-            <h1>Articles Page</h1>
+            <h1>Articles Page General</h1>
 
         </>
 

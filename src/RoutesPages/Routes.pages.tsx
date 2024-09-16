@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-
+import { Outlet } from "react-router-dom";
 const Home = lazy(() => import('../Pages/common/HomePage/Home.page'));
 const Marketplace = lazy(() => import('../Pages/common/Marketplace.page'));
 const Articles = lazy(() => import('../Pages/common/Articles.page'));
@@ -25,7 +25,7 @@ const RoutePage = () => {
                     </Routes>
                 </Suspense>
             </main>
-
+            <Outlet />
 
 
 

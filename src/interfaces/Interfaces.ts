@@ -12,6 +12,7 @@ export interface NavLinkProps  {
   
 }
 
+
 export interface FormState {
   username: string;
   email: string;

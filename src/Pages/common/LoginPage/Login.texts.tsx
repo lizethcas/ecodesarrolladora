@@ -1,3 +1,14 @@
+import { InputAtomProps } from "../../../components/Atoms/LabelComponent/Input.component.prueba";
+
+export const inputText:InputAtomProps = {
+  placeholder: "correo@ejemplo.com",
+  type: "date",
+  required: true,
+  autoComplete: "email",
+  
+  iconStyles: { color: "gray", size: 20 }
+}
+
 export const staticTextsForm = {
   emailPlaceholder: "Email",
   passwordPlaceholder: "Contraseña",

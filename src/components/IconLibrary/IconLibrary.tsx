@@ -1,7 +1,12 @@
-import { MdOutlinePeopleAlt, MdLogin } from "react-icons/md"
+import { MdOutlinePeopleAlt, MdLogin, MdAlternateEmail,MdOutlinePermIdentity  } from "react-icons/md"
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
 export const iconsLibrary = {
-    withoutIcon:null,
+    withoutIcon: null,
     users: MdOutlinePeopleAlt,
     login: MdLogin,
+    eye: FaEye,
+    EyeSlash: FaEyeSlash,
+    email: MdAlternateEmail,
+    person: MdOutlinePermIdentity,
 };

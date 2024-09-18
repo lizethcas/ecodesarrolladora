@@ -9,10 +9,7 @@ const LinkItem = ({ to, label, className, ...rest }: linkProps & Omit<RouterLink
     return (
         <Link
             to={to}
-            className={`relative inline-block transition-all duration-300
-                       border-b-2 border-transparent
-                       hover:border-[#d4eea8] focus:border-[#d4eea8]
-          
+            className={`     
             ${className}`}
             {...rest}
         >

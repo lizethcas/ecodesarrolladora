@@ -27,7 +27,7 @@ const Header = () => {
         <header className='flex justify-between items-center shadow-opacity30-black p-5 rounded-b-[30px] w-screen h-20 font-medium'>
             <Navigation
                 links={links}
-                ulClassName='flex gap-1 justify-end hidden md:flex items-center'
+                ulClassName='flex gap-3 justify-end hidden md:flex items-center'
                 navClassName={`flex justify-between w-full items-center flex-grow ${isLoginPage ? 'max-w-[90%]' : 'md:max-w-[76%]'}`}
             >
                 <LinkItem label="Ecodesarrolladores" to="/" />

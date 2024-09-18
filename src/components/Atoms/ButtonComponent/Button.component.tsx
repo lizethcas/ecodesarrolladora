@@ -1,3 +1,4 @@
+import React from 'react';
 import { ButtonHTMLAttributes, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { iconsLibrary } from '../../IconLibrary/IconLibrary';
@@ -18,13 +19,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
 }
 
-const Button: FC<ButtonProps> = ({
+const Button: FC<ButtonProps> = React.memo(({
     icon,
     label,
     iconStyles, // Añadido para pasar props al ícono
     variant = 'primary',
     size = 'm',
-
     className,
     ...props
 }) => {
@@ -51,9 +51,9 @@ const Button: FC<ButtonProps> = ({
     return (
         <button className={mergedClasses} {...props}>
             {label}
-            {IconComponent && <IconComponent {...iconStyles} />} {/* Renderiza el ícono con props */}
+            {IconComponent && <IconComponent {...iconStyles} />} 
         </button>
     );
-};
+});
 
 export default Button;

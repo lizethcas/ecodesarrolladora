@@ -4,15 +4,11 @@ import axios from 'axios';
 
 export const consultGet = async (endpoint: string): Promise<boolean> => {
     try {
-        const response = await axios.get(endpoint, {
-            withCredentials: true
-        });
-        return response.data.isValid;
+        const response = await axios.get(endpoint, { withCredentials: true });
+        console.log(response)
+        return response.data.is_authenticated;
     } catch (err) {
-        if (err.response?.status === 401) {
-            // Redirigir al login o mostrar mensaje de error
-            alert("Unauthorized: Please check your credentials.");
-        }
+        console.log(err)
         return false;
     }
 };
@@ -27,7 +23,7 @@ export const consultPost = async (endpoint: string, body: object) => {
         });
         return response.data;
     } catch (err) {
-      
+
         return err.response.data;
     }
 };

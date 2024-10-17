@@ -35,7 +35,7 @@ const Header = () => {
             <div className={`flex justify-end gap-2 ${isLoginPage ? 'md:max-w-[155px] w-full' : 'md:max-w-[288px] w-[64%]'}`}>
                 {!isLoginPage && (
                     <Button
-                        variant="primary"
+                        variant="secondary"
                         label="Iniciar sesión"
                         icon="login"
                         className="md:flex hidden"
@@ -43,7 +43,7 @@ const Header = () => {
                     />
                 )}
                 <Button
-                    variant="secondary"
+                    variant="primary"
                     label="Consultoria"
                     icon="users"
                     onClick={handleConsultoria}

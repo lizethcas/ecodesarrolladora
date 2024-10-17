@@ -1,59 +1,67 @@
-import React, { useState } from 'react';
-import InputLabel from '../../molecules/Input.component/InputLabel.compoentn';
+import React, { useState, FormEvent } from 'react';
+import Input from '../../Atoms/inputComponent/Input.component';
 import Button from '../../Atoms/ButtonComponent/Button.component';
-import { InputAtomProps } from '../../Atoms/LabelComponent/Input.component.prueba';
+import { InputProps } from '../../Atoms/inputComponent/Input.component';
+import { ButtonProps } from '../../Atoms/ButtonComponent/Button.component';
 
-export interface FormField extends InputAtomProps {
+// Definir la configuración para cada campo de input
+interface FieldConfig extends InputProps {
     id: string;
-    label: string;
-    showPassword?: boolean;
 }
 
+// Definir las propiedades para el formulario dinámico
 interface DynamicFormProps {
-    fields: FormField[];
+    children?: React.ReactNode
+    fields: FieldConfig[];
+    buttonProps: ButtonProps; // Props para el botón de envío
     onSubmit: (formData: { [key: string]: string }) => void;
-    children?: React.ReactNode;
+    className?: string;
 }
 
-const DynamicForm: React.FC<DynamicFormProps> = ({ fields, children, onSubmit }) => {
+const DynamicForm: React.FC<DynamicFormProps> = ({ fields, buttonProps, onSubmit, children, className }) => {
+    // Estado para manejar los valores de los inputs
     const [formValues, setFormValues] = useState<{ [key: string]: string }>({});
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Manejar cambios en los inputs
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { id, value } = e.target;
         setFormValues((prevValues) => ({
             ...prevValues,
-            [id]: value,
+            [id]: value, // Actualiza el valor del campo
         }));
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    // Manejar el envío del formulario
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        onSubmit(formValues); // Envía los valores del formulario al componente padre
+        onSubmit(formValues); // Pasa los valores al callback onSubmit
     };
-
+    const childrenArray = React.Children.toArray(children);
+    const topChild = childrenArray[0]; // Primer hijo
+    const bottomChild = childrenArray[1];
+    const endchild = childrenArray[2];
     return (
-        <form onSubmit={handleSubmit} className="space-y-4 m-auto w-[90%] sm:w-[30%]">
-            {fields.map((field, index) => (
-                <InputLabel
-                    key={index}
+        <form onSubmit={handleSubmit} className={`space-y-4 ${className}`}>
+            {topChild}
+            {fields.map((field) => (
+                <Input
+                    key={field.id}
                     id={field.id}
-                    labelText={field.label}
-                    inputProps={{
-                        type: field.type,
-                        placeholder: field.placeholder,
-                        required: field.required,
-                        autoComplete: field.autoComplete,
-                        icon: field.icon,
-                        iconStyles: field.iconStyles,
-                        onChange: handleChange, // Maneja el cambio de valores
-                        value: formValues[field.id] || '', // Mantén el estado sincronizado
-                        ...field,
-                    }}
-                    labelProps={{ htmlFor: field.id }}
+                    label={field.label}
+                    type={field.type}
+                    placeholder={field.placeholder}
+                    icon={field.icon}
+                    iconStyles={field.iconStyles}
+                    showPassword={field.showPassword}
+                    required={field.required}
+                    value={formValues[field.id] || ''}
+                    onChange={handleInputChange}
                 />
             ))}
-            {children}
-            <Button type="submit" size="l" label="Iniciar sesión" icon="login" />
+            {bottomChild}
+            {/* Renderizamos el botón de envío con las props pasadas */}
+            <Button type="submit" {...buttonProps} />
+            {endchild}
         </form>
     );
 };

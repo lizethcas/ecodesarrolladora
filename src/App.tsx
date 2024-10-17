@@ -25,6 +25,7 @@ function App() {
     const verifySession = async () => {
       try {
         const sessionIsValid = await consultGet(endpoints.check_session);
+        console.log(sessionIsValid)
         setIsAuthenticated(sessionIsValid);
       } catch (error) {
         console.error('Error verifying session:', error);
@@ -39,6 +40,8 @@ function App() {
       verifySession();
     } else {
       setLoading(false);
+
+
     }
   }, [location.pathname]);
 
@@ -48,7 +51,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      {<Header />}
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<HomeGeneralPage />} />
@@ -66,8 +69,7 @@ function App() {
             }
           />
           <Route
-            path="/persona"
-            element={
+            path="/persona" element={
               <ProtectedRoute isAuthenticated={isAuthenticated}>
                 <PersonPage />
               </ProtectedRoute>

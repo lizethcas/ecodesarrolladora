@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 import { iconsLibrary } from '../../IconLibrary/IconLibrary';
 import { IconBaseProps } from 'react-icons';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     /** Button name */
     label?: string;
     /** type of Button icon */

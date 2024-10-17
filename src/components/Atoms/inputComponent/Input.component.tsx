@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import { iconsLibrary } from '../../IconLibrary/IconLibrary';
 import { IconBaseProps } from 'react-icons';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   state?: 'success' | 'fail';
   label?: string;
   icon?: keyof typeof iconsLibrary;
@@ -40,7 +40,7 @@ const Input: React.FC<InputProps> = ({
   };
 
   const mergedClassesInput = twMerge(
-    `block border-gray-300 placeholder-white focus:placeholder-[#71777d] text-textColor bg-transparent px-2.5 pt-4 pb-2.5 border-2 rounded-lg focus:ring-0 w-full text-sm appearance-none focus:outline-none peer ${variantClassesInput[state]}`,
+    `block border-gray-300 placeholder-white focus:placeholder-[#71777d] text-textColor bg-transparent p-2 border-2 rounded-lg focus:ring-0 w-full text-sm appearance-none focus:outline-none peer ${variantClassesInput[state]}`,
     className
   );
 

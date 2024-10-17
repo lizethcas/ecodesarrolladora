@@ -12,13 +12,15 @@ interface InputLabelProps {
 
 const InputLabel: React.FC<InputLabelProps> = React.memo(({ id, labelText, inputProps, labelProps }) => {
   return (
-    <div>
-      <Label htmlFor={id} {...labelProps}>{labelText}</Label>
+    <div className="relative text-start">
+      <Label htmlFor={id} {...labelProps}
+      >{labelText}</Label>
       <InputAtom
         id={id}
         name={id} // Asegúrate de que name sea igual al id
         {...inputProps}
       />
+
     </div>
   );
 });
